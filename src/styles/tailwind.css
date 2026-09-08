@@ -1,0 +1,135 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../";
+
+/* Exact original breakpoints; ordered from wide to narrow. */
+@custom-variant wide (@media (min-width: 1500px));
+@custom-variant compact (@media (max-height: 780px) and (min-width: 901px));
+@custom-variant tablet (@media (max-width: 900px));
+@custom-variant mobile (@media (max-width: 600px));
+
+@theme {
+  --color-ink: #233951;
+  --color-blue: #3e587b;
+  --color-muted: #647384;
+  --color-orange: #cf702e;
+  --color-paper: #f7f8f9;
+  --color-line: #dce2e8;
+  --color-soft: #eaf0f5;
+  --font-sansation: Sansation, Arial, sans-serif;
+  --font-code: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --animate-arrive: arrive 0.45s both;
+  --animate-pop: pop 0.3s ease;
+  --animate-apple-fall: apple-fall 2.8s linear infinite;
+}
+
+/* Resolve the duration on each SVG joint, where the current gait is inherited. */
+@theme inline {
+  --animate-person-stride: person-stride var(--gait-duration, 1.2s) ease-in-out infinite;
+  --animate-person-knee: person-knee var(--gait-duration, 1.2s) ease-in-out infinite;
+  --animate-person-bob: person-bob var(--gait-duration, 1.2s) ease-in-out infinite;
+  --animate-track-scroll: track-scroll var(--gait-duration, 1.2s) linear infinite;
+}
+
+@font-face {
+	font-family: Sansation;
+	src: url('/assets/Sansation-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Sansation;
+	src: url('/assets/Sansation-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-display: swap;
+}
+
+/* Keep browser defaults from the original: Tailwind Preflight is intentionally omitted. */
+@layer base {
+  :root { @apply [--nav:72px] [--footer:76px]; }
+  * { @apply box-border; }
+  body { @apply font-sansation bg-paper text-ink m-0; }
+  button { @apply [-webkit-tap-highlight-color:transparent] [font:inherit] cursor-pointer text-inherit touch-manipulation; }
+  a { @apply [-webkit-tap-highlight-color:transparent] text-inherit no-underline; }
+  button:disabled { @apply [opacity:0.3] cursor-default; }
+  button:focus-visible { @apply [outline:3px_solid_var(--color-orange)] outline-offset-[5px]; }
+  a:focus-visible { @apply [outline:3px_solid_var(--color-orange)] outline-offset-[5px]; }
+  summary:focus-visible { @apply [outline:3px_solid_var(--color-orange)] outline-offset-[5px]; }
+  h1 { @apply m-0; }
+  h2 { @apply text-[clamp(34px,4.2vw,66px)] font-normal leading-[1.07] tracking-[-2px] m-0; }
+  h3 { @apply font-normal text-[25px] leading-[1.2] m-0; }
+  p { @apply leading-[1.55] m-0; }
+  h2 > span { @apply text-blue; }
+  code { @apply font-code; }
+  pre { @apply font-code leading-[1.9] text-[clamp(15px,1.55vw,24px)] whitespace-pre-wrap wrap-anywhere m-0; }
+  code em { @apply not-italic text-[#e8af70]; }
+  code b { @apply font-normal text-[#a8d8eb]; }
+  code q { @apply [quotes:none] text-[#b7d7b7]; }
+  code .key { @apply text-[#e1e6ef]; }
+  [hidden] { @apply hidden!; }
+  dialog { @apply rounded-[12px] bg-paper text-ink max-h-[86dvh] max-w-[min(1100px,92vw)] w-full [box-shadow:0_30px_100px_#0e233b40] p-[32px] border border-solid border-[#d8e1e8]; }
+  dialog::backdrop { @apply [background:#12273e99] [backdrop-filter:blur(5px)]; }
+  :root { @apply compact:[--nav:60px] compact:[--footer:64px]; }
+  h2 { @apply compact:text-[clamp(34px,3.8vw,56px)]; }
+  :root { @apply tablet:[--nav:62px] tablet:[--footer:70px]; }
+  h2 { @apply tablet:text-[43px]; }
+  :root { @apply mobile:[--nav:58px] mobile:[--footer:68px]; }
+  h2 { @apply mobile:text-[36px] mobile:tracking-[-1.3px]; }
+  dialog { @apply mobile:max-w-[94vw] mobile:max-h-[90dvh] mobile:p-[23px]; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { @apply animate-none! transition-none! scroll-auto!; }
+  }
+}
+
+@utility pop { @apply animate-pop!; }
+
+@keyframes arrive {
+	from {
+		opacity: 0;
+		transform: translateY(13px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pop {
+	50% {
+		transform: scale(1.15);
+		color: var(--color-orange);
+	}
+}
+
+/* SVG joints use fixed pivot points; gait variables are set by Tailwind data variants. */
+@keyframes person-stride {
+  0%, 100% { transform: rotate(var(--stride)); }
+  50% { transform: rotate(calc(var(--stride) * -1)); }
+}
+
+@keyframes person-knee {
+  0%, 50%, 100% { transform: rotate(0deg); }
+  75% { transform: rotate(var(--knee)); }
+}
+
+@keyframes person-bob {
+  0%, 50%, 100% { transform: translateY(0); }
+  25%, 75% { transform: translateY(calc(var(--bounce) * -1)); }
+}
+
+@keyframes track-scroll {
+  to { transform: translateX(-32px); }
+}
+
+@keyframes apple-fall {
+  0%, 22% {
+    transform: translateY(0);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(.55, 0, 1, .45);
+  }
+  72%, 85% { transform: translateY(100px); opacity: 1; }
+  94% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}

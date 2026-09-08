@@ -4,7 +4,24 @@
   "private": true,
   "description": "Presentación web interactiva de programación para todos · Axis Human / AI Spark",
   "scripts": {
-    "start": "node server.cjs",
-    "dev": "node server.cjs"
+    "start": "astro dev",
+    "dev": "astro dev",
+    "build": "astro build && node tools/export-offline.mjs",
+    "preview": "astro preview",
+    "test": "node --test",
+    "astro": "astro"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.1",
+    "tailwindcss": "^4.3.3"
+  },
+  "packageManager": "pnpm@12.3.4",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }

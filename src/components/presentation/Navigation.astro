@@ -1,0 +1,19 @@
+---
+import { slides } from "../../data/slides.js";
+---
+<footer class="bottom-bar h-[var(--footer)] grid grid-cols-[1fr_1fr_1fr] items-center [background:#fafbfc] [border-top-width:1px] [border-top-style:solid] [border-top-color:var(--color-line)] py-0 px-[3.5vw] tablet:px-[22px] mobile:grid-cols-[1fr_auto_1fr] mobile:py-0 mobile:px-[15px]">
+	<button class="chapter-label flex items-center gap-[10px] [background:none] text-left text-[12px] text-muted py-[10px] px-0 border-[0] border-none border-[currentColor] mobile:text-[9px] mobile:gap-[6px] mobile:[&_span:last-child]:max-w-[93px]" data-action='overview'
+		><span class="status-dot w-[6px] h-[6px] bg-orange rounded-[50%]"></span><span id='chapter-name'>Bienvenida</span></button
+	>
+	<nav class="slide-navigation flex items-center justify-center gap-[19px] [&_.icon-button]:border [&_.icon-button]:border-solid [&_.icon-button]:border-line [&_.next]:bg-ink [&_.next]:text-[white] [&_.next]:border-ink [&_.next:hover]:bg-blue mobile:gap-[8px] mobile:[&_.icon-button]:w-[32px] mobile:[&_.icon-button]:h-[32px]" aria-label='Navegación de diapositivas'>
+		<button class="icon-button inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line" id='prev' data-action='prev' aria-label='Diapositiva anterior'>←</button><span
+			id='counter'
+			aria-live='polite' class="[&#counter]:text-[13px] [&#counter]:tracking-[1px] [&#counter]:min-w-[61px] [&#counter]:text-center [&#counter]:tabular-nums [&#counter_span]:text-[#8b98a5] mobile:[&#counter]:text-[11px] mobile:[&#counter]:min-w-[47px]">01 <span>/ {slides.length}</span></span
+		><button class="icon-button next inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line" id='next' data-action='next' aria-label='Diapositiva siguiente'>→</button>
+	</nav>
+	<div class="footer-actions flex items-center gap-[20px] justify-end mobile:gap-0 mobile:[&_.text-button]:text-[9px] mobile:[&_.text-button]:max-w-[63px] mobile:[&_.text-button]:leading-[1.4] mobile:[&_.text-button_span]:ml-[2px] mobile:[&_.help]:hidden">
+		<button class="text-button [background:none] text-[12px] py-[10px] px-0 border-[0] border-none border-[currentColor] [&_span]:ml-[12px]" data-action='presenter' title='Abrir vista del docente (P)'
+			>Vista docente <span>↗</span></button
+		><button class="icon-button help inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line" data-action='help' aria-label='Ayuda y atajos'>?</button>
+	</div>
+</footer>

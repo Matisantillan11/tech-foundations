@@ -1,0 +1,23 @@
+<dialog id='overview'>
+	<div class="dialog-heading flex items-center justify-between gap-[30px] mb-[25px] [&_h2]:text-[30px] [&_h2]:tracking-[-0.5px] [&_.eyebrow]:mb-[10px] mobile:[&_h2]:text-[24px]">
+		<div><p class="eyebrow text-[11px] tracking-[2.4px] font-bold text-muted leading-[1.5] mobile:text-[9px] mobile:tracking-[1.6px]">EL RECORRIDO</p><h2>Elegí dónde continuar.</h2></div><button
+			class="icon-button inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line"
+			data-action='close'
+			aria-label='Cerrar índice'>×</button>
+	</div><div id='slide-grid' class="[&#slide-grid]:grid [&#slide-grid]:grid-cols-[repeat(3,1fr)] [&#slide-grid]:gap-[12px] [&#slide-grid_button]:[background:#eaf0f5] [&#slide-grid_button]:min-h-[112px] [&#slide-grid_button]:text-left [&#slide-grid_button]:rounded-[5px] [&#slide-grid_button]:flex [&#slide-grid_button]:flex-col [&#slide-grid_button]:gap-[10px] [&#slide-grid_button]:p-[20px] [&#slide-grid_button]:border [&#slide-grid_button]:border-solid [&#slide-grid_button]:border-[#d3dfe8] [&#slide-grid_button[aria-current=true]]:[background:#dbe7f0] [&#slide-grid_button[aria-current=true]]:border-blue [&#slide-grid_button_span]:text-[10px] [&#slide-grid_button_span]:tracking-[1px] [&#slide-grid_button_span]:text-muted [&#slide-grid_button_b]:text-[16px] [&#slide-grid_button_b]:font-normal mobile:[&#slide-grid]:grid-cols-[1fr_1fr] mobile:[&#slide-grid]:gap-[8px] mobile:[&#slide-grid_button]:min-h-[106px] mobile:[&#slide-grid_button]:p-[14px] mobile:[&#slide-grid_button_b]:text-[14px] mobile:[&#slide-grid_button_span]:text-[8px]"></div>
+</dialog>
+<dialog id='help' class="[&#help]:max-w-[590px]">
+	<div class="dialog-heading flex items-center justify-between gap-[30px] mb-[25px] [&_h2]:text-[30px] [&_h2]:tracking-[-0.5px] [&_.eyebrow]:mb-[10px] mobile:[&_h2]:text-[24px]">
+		<h2>A tu ritmo.</h2><button class="icon-button inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line" data-action='close' aria-label='Cerrar ayuda'>×</button>
+	</div><p>No hay avance automático. Cada ejemplo se activa cuando lo necesitás.</p><dl class="shortcuts grid grid-cols-[1fr_1.5fr] gap-[16px] text-[14px] my-[28px] mx-0 [&_dt]:[font-family:monospace] [&_dd]:text-muted [&_dd]:m-0 mobile:text-[12px]">
+		<dt>← / → / Espacio</dt><dd>Cambiar de diapositiva</dd><dt>Inicio / Fin</dt><dd>Ir al comienzo / al cierre</dd><dt>
+			G
+		</dt><dd>Abrir el índice</dd><dt>F</dt><dd>Pantalla completa</dd><dt>P</dt><dd>Abrir las notas del docente</dd><dt>
+			Esc
+		</dt><dd>Cerrar un panel</dd>
+	</dl><p class="small text-[13px] text-muted">
+		En el celular también podés deslizar hacia los costados. Se respeta la preferencia de movimiento reducido de tu
+		dispositivo.
+	</p>
+</dialog>
+<div id='toast' role='status' class="[&#toast]:fixed [&#toast]:bottom-[95px] [&#toast]:left-[50%] [&#toast]:[transform:translateX(-50%)] [&#toast]:bg-ink [&#toast]:text-[white] [&#toast]:max-w-[90vw] [&#toast]:rounded-[5px] [&#toast]:text-[14px] [&#toast]:z-[30] [&#toast]:hidden [&#toast]:py-[12px] [&#toast]:px-[20px] [&#toast.visible]:block"></div>

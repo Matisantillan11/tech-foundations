@@ -1,0 +1,11 @@
+---
+import Header from './Header.astro'
+import Navigation from './Navigation.astro'
+---
+
+<div id='audience'>
+	<Header />
+	<main id='stage' tabindex='-1' aria-label='Diapositiva actual' class="[&#stage]:h-[calc(100dvh_-_var(--nav)_-_var(--footer))] [&#stage]:min-h-[520px] [&#stage]:overflow-auto [&#stage]:[outline:none] [&#stage]:relative compact:[&#stage]:min-h-[480px] mobile:[&#stage]:min-h-0"></main>
+	<Navigation />
+	<div class="progress-track fixed bottom-0 h-[3px] [background:#e4e9ed] w-full z-[5]"><div id='progress' class="[&#progress]:h-full [&#progress]:bg-orange [&#progress]:[transition:width_0.35s_ease]"></div></div>
+</div>

@@ -1,0 +1,15 @@
+---
+import PresentationLayout from "../layouts/PresentationLayout.astro";
+import Audience from "../components/presentation/Audience.astro";
+import Presenter from "../components/presentation/Presenter.astro";
+import Panels from "../components/presentation/Panels.astro";
+---
+<PresentationLayout>
+  <Audience />
+  <Presenter />
+  <Panels />
+</PresentationLayout>
+
+<script>
+  import "../scripts/presentation.js";
+</script>

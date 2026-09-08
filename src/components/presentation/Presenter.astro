@@ -1,0 +1,24 @@
+<section id='presenter' hidden>
+	<header class="presenter-header h-[85px] flex gap-[25px] items-center [border-bottom-width:1px] [border-bottom-style:solid] [border-bottom-color:var(--color-line)] py-[20px] px-[35px] [&_img]:w-[135px] [&>span]:text-[10px] [&>span]:tracking-[2px] [&>span]:text-muted mobile:h-auto mobile:flex-wrap mobile:gap-[10px] mobile:p-[15px] mobile:[&_img]:w-[110px]">
+		<img src='assets/ai-spark.png' alt='AI Spark' /><span>VISTA DEL DOCENTE</span><div class="timer ml-auto flex gap-[12px] items-center [&_time]:[font:25px_monospace] [&_button]:text-[11px] [&_button]:[background:none] [&_button]:rounded-[4px] [&_button]:p-[8px] [&_button]:border [&_button]:border-solid [&_button]:border-line mobile:w-full mobile:mt-[5px] mobile:mb-0 mobile:mx-0">
+			<time id='elapsed'>00:00</time><button data-action='timer' id='timer-toggle'>Pausar</button><button
+				data-action='reset-timer'>Reiniciar</button>
+		</div>
+	</header>
+	<div class="presenter-grid grid grid-cols-[1fr_1.15fr] gap-[40px] max-w-[1450px] p-[45px] m-auto tablet:gap-[25px] tablet:p-[25px] mobile:grid-cols-[1fr] mobile:p-[20px]">
+		<section class="presenter-current [background:#eaf0f5] rounded-[10px] self-start p-[32px] [&_h1]:text-[42px] [&_h1]:font-normal [&_h1]:tracking-[-1px] [&_h1]:my-[25px] [&_h1]:mx-0 [&>p:not(.eyebrow)]:text-muted [&>p:not(.eyebrow)]:text-[16px] tablet:p-[24px] tablet:[&_h1]:text-[34px] mobile:[&_h1]:text-[31px] mobile:[&>p:not(.eyebrow)]:text-[14px]">
+			<p class="eyebrow text-[11px] tracking-[2.4px] font-bold text-muted leading-[1.5] mobile:text-[9px] mobile:tracking-[1.6px]" id='presenter-counter'></p><h1 id='presenter-title'></h1><p id='presenter-summary'></p><div
+				class="presenter-nav flex gap-[12px] my-[28px] mx-0 [&_.primary]:text-[12px]">
+				<button class="primary inline-flex items-center justify-between gap-[30px] rounded-[4px] text-[14px] bg-ink text-[#fff] py-[16px] px-[21px] border-[0] border-none border-[currentColor] [&:hover]:bg-blue" data-action='prev'>← Anterior</button><button class="primary inline-flex items-center justify-between gap-[30px] rounded-[4px] text-[14px] bg-ink text-[#fff] py-[16px] px-[21px] border-[0] border-none border-[currentColor] [&:hover]:bg-blue" data-action='next'
+					>Siguiente →</button>
+			</div><div class="up-next [border-top-width:1px] [border-top-style:solid] [border-top-color:#c7d5e0] py-[24px] px-0 [&_h3]:mt-[12px] [&_h3]:text-[22px]"><span class="eyebrow text-[11px] tracking-[2.4px] font-bold text-muted leading-[1.5] mobile:text-[9px] mobile:tracking-[1.6px]">A CONTINUACIÓN</span><h3 id='next-title'></h3></div><p
+				class="small text-[13px] text-muted">
+				Proyectá la ventana de la presentación y mantené esta ventana en tu pantalla.
+			</p>
+		</section><section class="presenter-notes [&>.eyebrow]:mb-[20px] [&_details]:[border-top-width:1px] [&_details]:[border-top-style:solid] [&_details]:[border-top-color:var(--color-line)] [&_details]:pt-[18px] [&_details]:mt-[30px] [&_summary]:cursor-pointer [&_summary]:text-blue [&_summary]:text-[14px]">
+			<p class="eyebrow text-[11px] tracking-[2.4px] font-bold text-muted leading-[1.5] mobile:text-[9px] mobile:tracking-[1.6px]">GUÍA PARA DICTAR LA CLASE</p><div id='teaching-notes' class="[&#teaching-notes_p]:text-[18px] [&#teaching-notes_p]:leading-[1.7] [&#teaching-notes_p]:mb-[20px] mobile:[&#teaching-notes_p]:text-[16px]"></div><details>
+				<summary>Notas originales y procedencia</summary><div id='original-notes' class="[&#original-notes]:text-[14px] [&#original-notes]:text-muted [&#original-notes_h4]:text-blue [&#original-notes_h4]:mb-[8px] [&#original-notes_p]:whitespace-pre-wrap [&#original-notes_p]:leading-[1.65]"></div>
+			</details>
+		</section>
+	</div>
+</section>

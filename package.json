@@ -1,0 +1,10 @@
+{
+  "name": "tech-foundations",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Presentación web interactiva de programación para todos · Axis Human / AI Spark",
+  "scripts": {
+    "start": "node server.cjs",
+    "dev": "node server.cjs"
+  }
+}

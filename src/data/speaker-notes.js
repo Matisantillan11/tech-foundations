@@ -78,7 +78,8 @@ export const speakerNotes = [
   [
     "Actividad de repaso creada únicamente con los conceptos de las primeras 13 diapositivas.",
     "Antes de responder, preguntá: ¿cuál es el nombre de la variable?, ¿qué tipo de dato tiene su valor?, ¿qué rama se ejecuta?",
-    "Respuesta: esDeDia guarda false, un booleano. Se ejecuta else y el modo queda oscuro. Pedí una explicación, no solo la opción correcta."
+    "Respuesta: quedaCafe guarda false, un booleano. Se ejecuta else y el aviso indica que se terminó el café. Pedí una explicación, no solo la opción correcta.",
+    "El ejemplo cambia a propósito respecto de la diapositiva 13 (modo claro/oscuro): así el grupo aplica la lógica en un caso nuevo en vez de repetir la respuesta ya vista."
   ],
   [
     "Cierre de este bloque, no del curso completo. Recuperá las tres ideas sin introducir contenidos posteriores a la diapositiva 13.",

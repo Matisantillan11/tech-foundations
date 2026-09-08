@@ -113,5 +113,5 @@ test('exercises update visible values, keep utility classes and reset when re-en
   exercise(element({ action: 'reveal' })); assert.equal(get('#constant-answer').hidden, false);
   exercise(element({ action: 'reveal' })); assert.equal(get('#constant-answer').hidden, true);
   exercise(element({ type: '3' })); assert.equal(get('#type-name').textContent, 'BigInt');
-  exercise(element({ answer: 'dark' })); assert.match(get('#exercise-feedback').textContent, /¡Exacto!/);
+  exercise(element({ answer: 'empty' })); assert.match(get('#exercise-feedback').textContent, /¡Exacto!/);
 });

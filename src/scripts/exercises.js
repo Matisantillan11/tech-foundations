@@ -104,12 +104,12 @@ export function createExercises(stage) {
 			)
 		}
 		if (btn.dataset.answer) {
-			const good = btn.dataset.answer === 'dark'
+			const good = btn.dataset.answer === 'empty'
 			stage.querySelectorAll('[data-answer]').forEach((b) => b.classList.remove('correct', 'wrong'))
 			btn.classList.add(good ? 'correct' : 'wrong')
 			$('#exercise-feedback').textContent = good
-				? '¡Exacto! esDeDia guarda false. La condición no se cumple y se ejecuta else: modo oscuro.'
-				: 'Mirá el valor de esDeDia: es false. La primera rama no se ejecuta. Probá de nuevo.'
+				? '¡Exacto! quedaCafe guarda false. La condición no se cumple y se ejecuta else: se terminó el café.'
+				: 'Mirá el valor de quedaCafe: es false. La primera rama no se ejecuta. Probá de nuevo.'
 			$('#exercise-feedback').classList.toggle('success', good); $('#exercise-feedback').classList.toggle('incorrect', !good)
 		}
   };

@@ -1,5 +1,5 @@
 import { createPhysicsExercise } from './physics-exercise.js'
-import { code } from '../data/formatters.js'
+import { code, tag } from '../data/formatters.js'
 
 const typeData = [
 	['TEXTO', '"Hola"', 'String', 'Una cadena de caracteres. La escribimos entre comillas.'],
@@ -30,9 +30,19 @@ const typeData = [
 	],
 ]
 
+const FOR_LIMIT = 3
+const WHILE_START = 3
+const SWITCH_PRICES = { chico: 800, mediano: 1000, grande: 1200 }
+const COMBO_COMISION = 200
+const COMBO_PRECIOS = { chico: 800, mediano: 1000, grande: 1500 }
+const calcularPrecioCombo = (tamaño) => COMBO_COMISION + (COMBO_PRECIOS[tamaño] ?? 1300)
+
 export function createExercises(stage) {
 	const $ = (selector) => stage.querySelector(selector)
 	let dynamicIndex = 0
+	let forIndex = 0
+	let whileCount = WHILE_START
+	let comboQueue = []
 	const physics = createPhysicsExercise(stage)
 	function pulse(element) {
 		element.classList.remove('pop')
@@ -61,6 +71,65 @@ export function createExercises(stage) {
 			btn.setAttribute('aria-expanded', String(!answer.hidden))
 			btn.textContent = answer.hidden ? 'Revelar respuesta +' : 'Ocultar respuesta −'
 		},
+		'for-step': () => {
+			if (forIndex >= FOR_LIMIT) return
+			forIndex += 1
+			$('#for-i').textContent = String(forIndex)
+			$('#for-condition').textContent = String(forIndex < FOR_LIMIT)
+			$('#for-cups').textContent += '☕'
+			pulse($('#for-i'))
+			$('#for-feedback').textContent =
+				forIndex >= FOR_LIMIT
+					? `El bucle terminó: la condición i < ${FOR_LIMIT} ya es falsa.`
+					: `Se sirvieron ${forIndex} de ${FOR_LIMIT} tazas.`
+			if (forIndex >= FOR_LIMIT) $('[data-action="for-step"]').disabled = true
+		},
+		'for-reset': () => {
+			forIndex = 0
+			$('#for-i').textContent = '0'
+			$('#for-condition').textContent = 'true'
+			$('#for-cups').textContent = ''
+			$('[data-action="for-step"]').disabled = false
+			$('#for-feedback').textContent = 'Hacé clic para correr una vuelta del bucle.'
+		},
+		'while-step': () => {
+			if (whileCount <= 0) return
+			whileCount -= 1
+			$('#while-count').textContent = String(whileCount)
+			$('#while-condition').textContent = String(whileCount > 0)
+			$('#while-people').textContent += '👤'
+			pulse($('#while-count'))
+			$('#while-feedback').textContent =
+				whileCount <= 0
+					? 'La fila se vació: la condición es falsa y el while se detiene solo.'
+					: `Quedan ${whileCount} clientes por atender.`
+			if (whileCount <= 0) $('[data-action="while-step"]').disabled = true
+		},
+		'while-reset': () => {
+			whileCount = WHILE_START
+			$('#while-count').textContent = String(WHILE_START)
+			$('#while-condition').textContent = 'true'
+			$('#while-people').textContent = ''
+			$('[data-action="while-step"]').disabled = false
+			$('#while-feedback').textContent = 'Hacé clic para atender al primer cliente de la fila.'
+		},
+		'combo-calculate': () => {
+			if (!comboQueue.length) return
+			const total = comboQueue.reduce((sum, size) => sum + calcularPrecioCombo(size), 0)
+			const breakdown = comboQueue.map((size) => calcularPrecioCombo(size)).join(' + ')
+			$('#combo-feedback').textContent = `Total: $${total} (${breakdown}).`
+			$('#combo-feedback').classList.add('success')
+			stage.querySelectorAll('[data-order]').forEach((b) => (b.disabled = true))
+			$('[data-action="combo-calculate"]').disabled = true
+		},
+		'combo-reset': () => {
+			comboQueue = []
+			$('#combo-queue').innerHTML = ''
+			$('#combo-feedback').textContent = 'Fila vacía. Sumá clientes con los botones de arriba.'
+			$('#combo-feedback').classList.remove('success')
+			stage.querySelectorAll('[data-order]').forEach((b) => (b.disabled = false))
+			$('[data-action="combo-calculate"]').disabled = true
+		},
 	}
 	return (btn) => {
 		if (btn.dataset.action) actions[btn.dataset.action]?.()
@@ -82,6 +151,17 @@ export function createExercises(stage) {
 					: 'let es una palabra reservada del lenguaje. Probá otra opción.'
 			$('#name-feedback').classList.toggle('success', good)
 			$('#name-feedback').classList.toggle('incorrect', !good)
+		}
+		if (btn.dataset.compare) {
+			const strict = btn.dataset.compare === 'strict'
+			stage.querySelectorAll('[data-compare]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)))
+			$('#compare-op').textContent = strict ? '===' : '=='
+			$('#compare-result').textContent = strict ? 'false' : 'true'
+			$('#compare-result').classList.toggle('text-green-600', !strict)
+			$('#compare-result').classList.toggle('text-orange-600', strict)
+			$('#compare-feedback').textContent = strict
+				? '=== también compara el tipo: "5" es un string y 5 es un number, así que son distintos.'
+				: '== compara solo el valor y convierte el tipo antes de comparar.'
 		}
 		if (btn.dataset.day) {
 			const day = btn.dataset.day === 'true'
@@ -107,6 +187,26 @@ export function createExercises(stage) {
 					? '<em>if</em> (esDeDia) {\n  modo = <q>"claro"</q>;\n} <em>else if</em> (esDeNoche) {\n  modo = <q>"oscuro"</q>;\n} <em>else</em> {\n  modo = <q>"automático"</q>;\n}'
 					: '<em>if</em> (esDeDia) {\n  modo = <q>"claro"</q>;\n} <em>else</em> {\n  modo = <q>"oscuro"</q>;\n}',
 			)
+		}
+		if (btn.dataset.size) {
+			const size = btn.dataset.size
+			stage.querySelectorAll('[data-size]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)))
+			const price = SWITCH_PRICES[size] ?? SWITCH_PRICES.mediano
+			$('#switch-price').textContent = `$${price}`
+			stage.querySelectorAll('[id^="case-"]').forEach((span) => span.classList.remove('active-line'))
+			$(`#case-${SWITCH_PRICES[size] ? size : 'default'}`).classList.add('active-line')
+			$('#switch-feedback').textContent = SWITCH_PRICES[size]
+				? `Coincide con el case "${size}": precio ${price}.`
+				: 'No coincide con ningún case: se ejecuta el default.'
+		}
+		if (btn.dataset.order) {
+			comboQueue.push(btn.dataset.order)
+			$('#combo-queue').innerHTML = comboQueue
+				.map((size, i) => tag(`${i + 1} · ${size[0].toUpperCase()}${size.slice(1)}`))
+				.join('')
+			$('#combo-feedback').classList.remove('success')
+			$('#combo-feedback').textContent = `Fila: ${comboQueue.length} cliente${comboQueue.length === 1 ? '' : 's'}. Sumá mentalmente antes de calcular.`
+			$('[data-action="combo-calculate"]').disabled = false
 		}
 		if (btn.dataset.answer) {
 			const good = btn.dataset.answer === 'empty'

@@ -30,7 +30,7 @@ export function setupAudience(navigation) {
 			!button ||
 			button.disabled ||
 			!button.matches(
-				'[data-type],[data-name],[data-day],[data-condition],[data-answer],[data-action="variable"],[data-action="reset-speed"],[data-action="constant"],[data-action="dynamic"],[data-action="reveal"]',
+				'[data-type],[data-name],[data-day],[data-condition],[data-answer],[data-size],[data-order],[data-compare],[data-action="variable"],[data-action="reset-speed"],[data-action="constant"],[data-action="dynamic"],[data-action="reveal"],[data-action="for-step"],[data-action="for-reset"],[data-action="while-step"],[data-action="while-reset"],[data-action="combo-calculate"],[data-action="combo-reset"]',
 			)
 		)
 			return

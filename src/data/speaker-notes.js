@@ -52,6 +52,12 @@ export const speakerNotes = [
 		'Las funciones son objetos invocables. Date representa un instante; la forma de mostrarlo depende de la zona horaria y el formato.',
 	],
 	[
+		'Comparadores y actualizadores son la base de lo que viene: los vamos a usar constantemente en condicionales y bucles.',
+		'El gotcha más importante de JavaScript: == convierte el tipo antes de comparar; === no. Por eso "5" == 5 da true pero "5" === 5 da false. Recomendá usar siempre === y !== salvo que tengan una razón específica para lo contrario.',
+		'Los operadores de actualización son azúcar sintáctico: contador++ es exactamente lo mismo que contador = contador + 1, solo más corto de escribir.',
+		'Avisales que van a volver a ver estos operadores más adelante en la clase, dentro de los bucles for y while (i++, total += ...).',
+	],
+	[
 		'Esta pregunta aparece explícitamente en las notas originales. Dejá que el grupo anticipe la respuesta.',
 		'Usá el botón para pasar de Number a String y luego a Boolean. En JavaScript, una variable let no queda atada al tipo inicial.',
 		'Revelá la respuesta sobre const después de escuchar al grupo. Distinguí reasignación de una variable y modificación de las propiedades de un objeto.',
@@ -76,6 +82,35 @@ export const speakerNotes = [
 		'Antes de responder, preguntá: ¿cuál es el nombre de la variable?, ¿qué tipo de dato tiene su valor?, ¿qué rama se ejecuta?',
 		'Respuesta: quedaCafe guarda false, un booleano. Se ejecuta else y el aviso indica que se terminó el café. Pedí una explicación, no solo la opción correcta.',
 		'El ejemplo cambia a propósito respecto de la diapositiva 13 (modo claro/oscuro): así el grupo aplica la lógica en un caso nuevo en vez de repetir la respuesta ya vista.',
+	],
+	[
+		'switch compara un mismo valor (tamaño) contra varios case posibles. Cuando encuentra una coincidencia, ejecuta ese bloque; break corta la ejecución para no seguir revisando los demás case.',
+		'Probá los tres tamaños conocidos y después XL: como no hay ningún case "xl", se ejecuta el default. Remarcá que default es la red de contención cuando ningún case coincide.',
+		'Si preguntan por qué no usar if / else if en su lugar: switch resulta más claro cuando comparamos un mismo valor contra muchas opciones puntuales; con condiciones más complejas (rangos, combinaciones) sigue siendo mejor if / else.',
+	],
+	[
+		'Conectá con el bloque anterior: ya vimos una decisión (if) que se toma una sola vez. Ahora mostramos una decisión que se repite mientras siga siendo verdadera.',
+		'Remarcá la diferencia clave con un if: en un bucle, al terminar el bloque de código volvemos a preguntar por la condición, en vez de seguir de largo.',
+		'No profundices todavía en for ni en while: esta diapositiva es solo el concepto general que van a ver aplicado en las próximas dos.',
+	],
+	[
+		'Leé el for de izquierda a derecha: primero se declara i en 0 (inicio), después se revisa la condición i < 3, y al final de cada vuelta se ejecuta i++ (paso).',
+		'Cada clic en Servir una taza simula una vuelta completa del bucle: i avanza, se sirve una taza y se vuelve a evaluar la condición.',
+		'Cuando i llega a 3, la condición i < 3 pasa a ser falsa y el bucle se detiene solo. No hace falta que nadie le diga "parar": lo decide la condición.',
+		'Usá for cuando sabés de antemano cuántas vueltas necesitás, aunque sea una cantidad que venga guardada en una variable.',
+	],
+	[
+		'Contrastá con la diapositiva anterior: acá no elegimos un número fijo de vueltas. El bucle depende de una condición externa, quedanClientes > 0.',
+		'Cada clic en Atender un cliente resta uno a quedanClientes. Cuando llega a 0, la condición se vuelve falsa y el bucle se detiene.',
+		'Si preguntan por qué no usamos for acá: no sabemos cuántos clientes van a venir hasta que la fila realmente se vacíe, así que no hay un número fijo de vueltas para escribir en el for.',
+	],
+	[
+		'Esta vez no hay una respuesta fija: el grupo arma la fila en vivo con los botones, así que el total cambia en cada corrida. Es a propósito, para que calculen de verdad en lugar de recordar un resultado.',
+		'Son dos funciones, cada una con una sola tarea: calcularPrecio recibe un tamaño y devuelve un precio (comisión fija + precio según el switch); calcularTotal solo recorre pedidos y acumula. Ninguna hace el trabajo de la otra.',
+		'pedidos es un array, como el que vieron en la diapositiva de Array, y arranca vacío igual que en el código. Cada clic en + Chico / + Mediano / + Grande le agrega un elemento.',
+		'Pedí que sumen mentalmente antes de tocar Calcular total. El for de calcularTotal usa el mismo patrón que ya vieron: i arranca en 0 y avanza mientras sea menor que la cantidad de pedidos en la fila.',
+		'Si preguntan por qué separar calcularPrecio de calcularTotal en vez de sumar todo en un solo bloque: así se puede probar o reutilizar el cálculo de un pedido sin depender del bucle, y viceversa.',
+		'Usá Reiniciar fila para repetir el ejercicio con otra combinación de tamaños si el grupo quiere practicar de nuevo.',
 	],
 	[
 		'Cierre de este bloque, no del curso completo. Recuperá las tres ideas sin introducir contenidos posteriores a la diapositiva 13.',

@@ -20,4 +20,50 @@
 		dispositivo.
 	</p>
 </dialog>
+<dialog id='glossary' class="max-w-[760px] mobile:max-w-[94vw]">
+	<div class="dialog-heading flex items-center justify-between gap-[30px] mb-[16px] [&_h2]:text-[30px] [&_h2]:tracking-[-0.5px] [&_.eyebrow]:mb-[10px] mobile:[&_h2]:text-[24px]">
+		<div><p class="eyebrow text-[11px] tracking-[2.4px] font-bold text-muted leading-[1.5] mobile:text-[9px] mobile:tracking-[1.6px]">PARA CUANDO TERMINE LA CLASE</p><h2>Glosario rápido.</h2></div><button
+			class="icon-button inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line"
+			data-action='close'
+			aria-label='Cerrar glosario'>×</button>
+	</div><p class="text-[14px] text-muted mb-[6px]">Términos que vas a volver a escuchar trabajando con equipos de tecnología.</p><div class="glossary-body max-h-[54vh] overflow-y-auto pr-[8px] mt-[10px] [&_h3]:text-[12px] [&_h3]:tracking-[1.5px] [&_h3]:font-bold [&_h3]:text-blue [&_h3]:mt-[22px] [&_h3]:mb-[4px] [&_h3]:first:mt-0 [&_p]:text-[14px] [&_p]:leading-[1.4] [&_p]:[border-bottom-width:1px] [&_p]:[border-bottom-style:solid] [&_p]:[border-bottom-color:var(--color-line)] [&_p]:py-[9px] [&_p]:px-0 [&_p_code]:[font:14px_monospace] [&_p_code]:text-blue [&_p_code]:mr-[6px] mobile:max-h-[50vh] mobile:[&_p]:text-[13px]">
+		<h3>Variables y constantes</h3>
+		<p><code>variable</code>Espacio con nombre para guardar un dato que puede cambiar. Se declara con <code>let</code>.</p>
+		<p><code>constante</code>Espacio con nombre para guardar un dato que no se puede reasignar. Se declara con <code>const</code>.</p>
+		<p><code>declarar</code>Crear una variable o constante y darle un nombre.</p>
+		<p><code>asignar</code>Guardar un valor dentro de una variable o constante con el signo <code>=</code>.</p>
+		<h3>Tipos de datos</h3>
+		<p><code>tipo de dato</code>La categoría de información que guarda una variable: texto, número, etc.</p>
+		<p><code>string</code>Un texto, escrito entre comillas. Ej: <code>"Hola"</code>.</p>
+		<p><code>number</code>Un valor numérico, entero o decimal.</p>
+		<p><code>boolean</code>Un valor que solo puede ser <code>true</code> o <code>false</code>.</p>
+		<p><code>bigint</code>Un número entero muy grande, más allá de lo que <code>number</code> puede representar con precisión.</p>
+		<p><code>undefined</code>Una variable declarada que todavía no tiene un valor asignado.</p>
+		<p><code>null</code>Un valor vacío asignado a propósito, para indicar «no hay nada» de forma intencional.</p>
+		<p><code>object</code>Un dato que agrupa varias propiedades relacionadas, en pares de clave y valor.</p>
+		<p><code>array</code>Una lista ordenada de elementos.</p>
+		<p><code>function</code>Un bloque de código reutilizable que ejecuta una tarea específica.</p>
+		<p><code>primitivo</code>Un valor simple e inmutable (string, number, boolean...), a diferencia de un objeto.</p>
+		<h3>Operadores</h3>
+		<p><code>=== !==</code>Comparan si dos valores son iguales o distintos en valor Y en tipo. Los recomendados.</p>
+		<p><code>== !=</code>Comparan solo el valor, convirtiendo el tipo antes. Mejor evitarlos.</p>
+		<p><code>++ --</code>Suman o restan 1 al valor de una variable.</p>
+		<p><code>+= -=</code>Suman o restan un valor a una variable y guardan el resultado en la misma variable.</p>
+		<h3>Condicionales</h3>
+		<p><code>condición</code>Una expresión que se evalúa como <code>true</code> o <code>false</code> para decidir qué camino seguir.</p>
+		<p><code>if</code>«Si». Ejecuta un bloque de código solo cuando la condición es verdadera.</p>
+		<p><code>else</code>«Si no». Ejecuta un bloque alternativo cuando la condición del <code>if</code> es falsa.</p>
+		<p><code>else if</code>Encadena una condición adicional antes del <code>else</code> final.</p>
+		<h3>Bucles y switch</h3>
+		<p><code>bucle</code>Estructura que repite un bloque de código mientras se cumpla una condición (en inglés, <code>loop</code>).</p>
+		<p><code>for</code>Un bucle para cuando sabés de antemano cuántas veces querés repetir algo.</p>
+		<p><code>while</code>Un bucle que repite mientras una condición siga siendo verdadera, sin un número fijo de vueltas.</p>
+		<p><code>iteración</code>Cada vuelta o repetición de un bucle.</p>
+		<p><code>switch</code>Compara un mismo valor contra varios casos (<code>case</code>) posibles.</p>
+		<p><code>case</code>Cada una de las opciones posibles dentro de un <code>switch</code>.</p>
+		<p><code>default</code>El caso de respaldo de un <code>switch</code>: se ejecuta si ningún <code>case</code> coincide.</p>
+		<p><code>break</code>Corta la ejecución dentro de un <code>switch</code> (o un bucle) para no seguir evaluando el resto.</p>
+		<p><code>return</code>Dentro de una función, entrega un resultado y termina su ejecución.</p>
+	</div>
+</dialog>
 <div id='toast' role='status' class="[&#toast]:fixed [&#toast]:bottom-[95px] [&#toast]:left-[50%] [&#toast]:[transform:translateX(-50%)] [&#toast]:bg-ink [&#toast]:text-[white] [&#toast]:max-w-[90vw] [&#toast]:rounded-[5px] [&#toast]:text-[14px] [&#toast]:z-[30] [&#toast]:hidden [&#toast]:py-[12px] [&#toast]:px-[20px] [&#toast.visible]:block"></div>

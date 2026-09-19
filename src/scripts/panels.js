@@ -16,7 +16,7 @@ export async function toggleFullscreen() {
   } catch { showToast('No se pudo activar pantalla completa. Usá la opción del navegador.'); }
 }
 export function setupPanels(navigation) {
-  const overview = document.getElementById('overview'), help = document.getElementById('help');
+  const overview = document.getElementById('overview'), help = document.getElementById('help'), glossary = document.getElementById('glossary');
   function openOverview() {
     document.getElementById('slide-grid').innerHTML = slides.map((slide, index) =>
       `<button data-go="${index}" aria-current="${index === navigation.current}"><span>${String(index + 1).padStart(2, '0')} · ${escapeHTML(slide.chapter)}</span><b>${escapeHTML(slide.title)}</b></button>`
@@ -24,8 +24,9 @@ export function setupPanels(navigation) {
     overview.showModal(); overview.querySelector('[aria-current="true"]').focus();
   }
   const openHelp = () => help.showModal();
+  const openGlossary = () => glossary.showModal();
   const actions = {
-    overview: openOverview, help: openHelp, fullscreen: toggleFullscreen,
+    overview: openOverview, help: openHelp, glossary: openGlossary, fullscreen: toggleFullscreen,
     close: () => document.querySelectorAll('dialog[open]').forEach((dialog) => dialog.close()),
   };
   document.addEventListener('click', (event) => {

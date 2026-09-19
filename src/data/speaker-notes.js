@@ -5,10 +5,6 @@ export const speakerNotes = [
     "Presentá Tech Foundations como un espacio para entender los conceptos y conversar. Pedí ejemplos cotidianos a lo largo de la clase."
   ],
   [
-    "Recuperá la idea original de un espacio de reflexión, investigación y pensamiento aplicado.",
-    "Aclarales que pueden interrumpir para preguntar. Los pequeños experimentos no son un examen: sirven para construir intuición."
-  ],
-  [
     "La diapositiva original plantea esta pregunta sin desarrollar respuestas. Usala como disparador, sin introducir un módulo nuevo de IA.",
     "Recogé dos o tres ejemplos del grupo. Dejá la pregunta abierta y conectá con la importancia de entender los fundamentos.",
     "La diapositiva 6 era un marcador de plantilla («Título de slide – Logo AI SPARK»); se conserva la identidad visual y se omite ese texto de relleno."

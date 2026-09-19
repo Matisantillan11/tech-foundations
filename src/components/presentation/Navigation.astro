@@ -12,7 +12,7 @@ import { slides } from "../../data/slides.js";
 		><button class="icon-button next inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line" id='next' data-action='next' aria-label='Diapositiva siguiente'>→</button>
 	</nav>
 	<div class="footer-actions flex items-center gap-[20px] justify-end mobile:gap-0 mobile:[&_.text-button]:text-[9px] mobile:[&_.text-button]:max-w-[63px] mobile:[&_.text-button]:leading-[1.4] mobile:[&_.text-button_span]:ml-[2px] mobile:[&_.help]:hidden">
-		<button class="text-button [background:none] text-[12px] py-[10px] px-0 border-[0] border-none border-[currentColor] [&_span]:ml-[12px]" data-action='presenter' title='Abrir vista del docente (P)'
+		<button class="teacher-only text-button [background:none] text-[12px] py-[10px] px-0 border-[0] border-none border-[currentColor] [&_span]:ml-[12px]" data-action='presenter' title='Abrir vista del docente (P)' hidden
 			>Vista docente <span>↗</span></button
 		><button class="icon-button help inline-grid place-items-center w-[38px] h-[38px] [background:transparent] rounded-[50%] text-[22px] [transition:background_0.2s] border border-solid border-[transparent] [&:hover:not(:disabled):not(.next)]:[background:#e7edf2] [&.help]:text-[15px] [&.help]:w-[29px] [&.help]:h-[29px] [&.help]:border-line" data-action='help' aria-label='Ayuda y atajos'>?</button>
 	</div>

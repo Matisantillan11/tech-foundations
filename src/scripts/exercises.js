@@ -1,44 +1,48 @@
-import { createPhysicsExercise } from "./physics-exercise.js";
-import { code } from "../data/formatters.js";
+import { createPhysicsExercise } from './physics-exercise.js'
+import { code } from '../data/formatters.js'
 
 const typeData = [
-		['TEXTO', '"Hola"', 'String', 'Una cadena de caracteres. La escribimos entre comillas.'],
-		['NÚMERO', '28', 'Number', 'Para cantidades, edades o medidas. También puede representar decimales, como 2.5.'],
-		[
-			'VERDADERO O FALSO',
-			'true / false',
-			'Boolean',
-			'Solo dos valores posibles. Como la respuesta a una pregunta de sí o no.',
-		],
-		[
-			'ENTERO DE GRAN PRECISIÓN',
-			'9007199254740993n',
-			'BigInt',
-			'Para trabajar con enteros más allá del rango de precisión segura de Number.',
-		],
-		[
-			'SIN VALOR DEFINIDO',
-			'undefined',
-			'Undefined',
-			'Por ejemplo, una variable declarada a la que todavía no asignamos un valor.',
-		],
-		[
-			'AUSENCIA INTENCIONAL',
-			'null',
-			'Null',
-			'Indicamos explícitamente que no hay un valor. Una caja que dejamos vacía a propósito.',
-		],
-	]
+	['TEXTO', '"Hola"', 'String', 'Una cadena de caracteres. La escribimos entre comillas.'],
+	['NÚMERO', '28', 'Number', 'Para cantidades, edades o medidas. También puede representar decimales, como 2.5.'],
+	[
+		'VERDADERO O FALSO',
+		'true / false',
+		'Boolean',
+		'Solo dos valores posibles. Como la respuesta a una pregunta de sí o no.',
+	],
+	[
+		'ENTERO DE GRAN PRECISIÓN',
+		'9007199254740993n',
+		'BigInt',
+		'Para trabajar con enteros más allá del rango de precisión segura de Number.',
+	],
+	[
+		'SIN VALOR DEFINIDO',
+		'undefined',
+		'Undefined',
+		'Por ejemplo, una variable declarada a la que todavía no asignamos un valor.',
+	],
+	[
+		'AUSENCIA INTENCIONAL',
+		'null',
+		'Null',
+		'Indicamos explícitamente que no hay un valor. Una caja que dejamos vacía a propósito.',
+	],
+]
 
 export function createExercises(stage) {
-  const $ = selector => stage.querySelector(selector);
-  let dynamicIndex = 0;
-  const physics = createPhysicsExercise(stage);
-  function pulse(element) { element.classList.remove("pop"); void element.offsetWidth; element.classList.add("pop"); }
-  const actions = {
-    variable: physics.increase,
-    constant: physics.rejectGravityChange,
-    'reset-speed': physics.reset,
+	const $ = (selector) => stage.querySelector(selector)
+	let dynamicIndex = 0
+	const physics = createPhysicsExercise(stage)
+	function pulse(element) {
+		element.classList.remove('pop')
+		void element.offsetWidth
+		element.classList.add('pop')
+	}
+	const actions = {
+		variable: physics.increase,
+		constant: physics.rejectGravityChange,
+		'reset-speed': physics.reset,
 		dynamic: () => {
 			dynamicIndex = (dynamicIndex + 1) % 3
 			const values = [
@@ -57,9 +61,9 @@ export function createExercises(stage) {
 			btn.setAttribute('aria-expanded', String(!answer.hidden))
 			btn.textContent = answer.hidden ? 'Revelar respuesta +' : 'Ocultar respuesta −'
 		},
-  };
-  return (btn) => {
-    if (btn.dataset.action) actions[btn.dataset.action]?.();
+	}
+	return (btn) => {
+		if (btn.dataset.action) actions[btn.dataset.action]?.()
 		if (btn.dataset.type !== undefined) {
 			const data = typeData[Number(btn.dataset.type)]
 			;['#type-category', '#type-value', '#type-name', '#type-description'].forEach(
@@ -72,11 +76,12 @@ export function createExercises(stage) {
 			const good = btn.dataset.name === 'good'
 			btn.classList.add(good ? 'correct' : 'wrong')
 			$('#name-feedback').textContent = good
-				? 'Exacto. edadPersona es válido y describe el dato que guarda.'
+				? 'Exacto. edad es válido y describe el dato que guarda.'
 				: btn.dataset.name === 'bad'
 					? 'Un nombre no puede empezar con un número. Probá otra opción.'
 					: 'let es una palabra reservada del lenguaje. Probá otra opción.'
-			$('#name-feedback').classList.toggle('success', good); $('#name-feedback').classList.toggle('incorrect', !good)
+			$('#name-feedback').classList.toggle('success', good)
+			$('#name-feedback').classList.toggle('incorrect', !good)
 		}
 		if (btn.dataset.day) {
 			const day = btn.dataset.day === 'true'
@@ -110,7 +115,8 @@ export function createExercises(stage) {
 			$('#exercise-feedback').textContent = good
 				? '¡Exacto! quedaCafe guarda false. La condición no se cumple y se ejecuta else: se terminó el café.'
 				: 'Mirá el valor de quedaCafe: es false. La primera rama no se ejecuta. Probá de nuevo.'
-			$('#exercise-feedback').classList.toggle('success', good); $('#exercise-feedback').classList.toggle('incorrect', !good)
+			$('#exercise-feedback').classList.toggle('success', good)
+			$('#exercise-feedback').classList.toggle('incorrect', !good)
 		}
-  };
+	}
 }

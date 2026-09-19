@@ -1,5 +1,7 @@
-const badge = (label) => `<span class="rounded-[4px] border border-solid border-line bg-paper px-[10px] py-[5px] font-code text-[12px] text-blue">${label}</span>`;
-const button = 'inline-flex items-center justify-center gap-[12px] rounded-[4px] border border-solid border-[#b7c6d2] bg-transparent px-[16px] py-[11px] text-[13px] [&:hover:not(:disabled)]:bg-soft';
+const badge = (label) =>
+	`<span class="rounded-[4px] border border-solid border-line bg-paper px-[10px] py-[5px] font-code text-[12px] text-blue">${label}</span>`
+const button =
+	'inline-flex items-center justify-center gap-[12px] rounded-[4px] border border-solid border-[#b7c6d2] bg-transparent px-[16px] py-[11px] text-[13px] [&:hover:not(:disabled)]:bg-soft'
 
 // Inline SVG keeps the illustrations crisp, local and easy to animate with Tailwind.
 const runner = `
@@ -38,7 +40,7 @@ const runner = `
         <circle cx="154" cy="42" r="1.5" fill="#304968" />
       </g>
     </g>
-  </svg>`;
+  </svg>`
 
 const tree = `
   <svg viewBox="0 0 320 185" role="img" aria-label="Un árbol deja caer una manzana repetidamente con la misma gravedad"
@@ -57,14 +59,14 @@ const tree = `
       <path d="M213 55c-12-9-17 8-8 14 4 3 6 0 8 0s5 3 8 0c9-7 4-22-8-14" fill="#cf702e" />
       <path d="M206 57q-3 2-2 6" fill="none" stroke="#efbd89" stroke-width="2" stroke-linecap="round" />
     </g>
-  </svg>`;
+  </svg>`
 
 export const physicsSlide = {
-  title: 'Velocidad y gravedad.',
-  chapter: '01 · Variables y constantes',
-  source: [7, 8],
-  summary: 'La velocidad cambia con let. La gravedad se mantiene en 9,81 m/s² con const en este modelo.',
-  html: `
+	title: 'Velocidad y gravedad.',
+	chapter: '01 · Variables y constantes',
+	source: [7, 8],
+	summary: 'La velocidad cambia con let. La gravedad se mantiene en 9,81 m/s² con const en este modelo.',
+	html: `
     <p class="eyebrow text-[11px] tracking-[2.4px] font-bold text-muted leading-[1.5] mobile:text-[9px] mobile:tracking-[1.6px]">01 / VARIABLES Y CONSTANTES</p>
     <h2>Una cambia.<br><span>La otra se mantiene.</span></h2>
     <div class="grid grid-cols-2 gap-[24px] mobile:grid-cols-1 mobile:gap-[20px]">
@@ -100,6 +102,5 @@ export const physicsSlide = {
     </div>
     <div>
       <p id="variable-feedback" class="min-h-[24px] text-[14px] text-blue" aria-live="polite">Aumentá la velocidad: de caminar a trotar y correr. ¿Podés cambiar la gravedad?</p>
-      <p class="mt-[7px] text-[11px] text-muted">Modelo simplificado cerca de la superficie terrestre: tomamos g ≈ 9,81 m/s².</p>
     </div>`,
-};
+}

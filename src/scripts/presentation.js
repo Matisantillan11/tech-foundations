@@ -2,6 +2,7 @@ import { createNavigation } from './navigation.js';
 import { setupPanels, showToast, toggleFullscreen } from './panels.js';
 import { setupShortcuts } from './shortcuts.js';
 import { connectPresenter } from './sync.js';
+import { setupEmailGate, isTeacher } from './teacher-gate.js';
 
 // Compose features here; view-specific code is loaded only when needed.
 async function start() {
@@ -16,12 +17,15 @@ async function start() {
     const { setupAudience } = await import('./audience.js');
     setupAudience(navigation);
   }
-  setupShortcuts(navigation, {
-    overview: panels.openOverview, help: panels.openHelp, fullscreen: toggleFullscreen,
-    presenter: isPresenter ? undefined : sync.openPresenter,
-  });
   document.addEventListener('click', (event) => {
-    if (event.target.closest('button[data-action="presenter"]')) sync.openPresenter();
+    if (isTeacher() && event.target.closest('button[data-action="presenter"]')) sync.openPresenter();
+  });
+  setupEmailGate((teacher) => {
+    document.querySelectorAll('.teacher-only').forEach((element) => { element.hidden = !teacher; });
+    setupShortcuts(navigation, {
+      overview: panels.openOverview, help: panels.openHelp, fullscreen: toggleFullscreen,
+      presenter: !isPresenter && teacher ? sync.openPresenter : undefined,
+    });
   });
   sync.ready();
 }

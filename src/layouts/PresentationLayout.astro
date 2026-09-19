@@ -1,5 +1,6 @@
 ---
 import '../styles/tailwind.css'
+import EmailGate from '../components/presentation/EmailGate.astro'
 ---
 
 <!doctype html>
@@ -15,6 +16,9 @@ import '../styles/tailwind.css'
 		<title>Tech Foundations · Programación para todos</title>
 	</head>
 	<body>
-		<slot />
+		<div id='app' inert>
+			<slot />
+		</div>
+		<EmailGate />
 	</body>
 </html>
